@@ -34,14 +34,15 @@
         document.getElementById("result-text").textContent = decodedText;
 
         // Gửi dữ liệu lên server
-        fetch("http://192.168.1.172:8081", {
+        fetch("http://192.168.1.172:8080", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ Value: decodedText }),
+          mode: "no-cors",
         })
-          .then((response) => response.text())
+          .then((response) => response.json())
           .then((data) => {
             console.log("Server response:", data);
           })
